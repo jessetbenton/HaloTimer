@@ -1,0 +1,22 @@
+#itemTimers {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+#activeTimers {
+    position: relative;
+    left: 0;
+    width: 228px;
+    
+}
+.weapon {
+    width: 200px;
+    heigh: 200px;
+    background: #dadada;
+    border-radius: 25px;
+}
+canvas {
+    padding-right: 4px;
+    width: 110px;
+    height: 110px;
+}

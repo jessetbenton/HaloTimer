@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="js/jquery-1.9.1.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/ocanvas.min.js"></script>
+        <script src="js/stopwatch.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <body>
+    <div id="activeTimers"></div>
+    <div id="itemTimers">
+        <img id='weapon_0' class='weapon' src='images/rocket.png'></img>
+        <img id='weapon_1' class='weapon' src='images/overshield.png'></img>
+        <img id='weapon_2' class='weapon' src='images/stickydetonator.png'></img>
+        <img id='weapon_3' class='weapon' src='images/railgun.png'></img>
+        <img id='weapon_4' class='weapon' src='images/sniper.png'></img>
+        <img id='weapon_5' class='weapon' src='images/dmr.png'></img>
+        <img id='weapon_6' class='weapon' src='images/lightrifle.png'></img>
+        <img id='weapon_7' class='weapon' src='images/boltshot.png'></img>
+        
+        <!--<canvas id='canvas0' width="110" height="110"></canvas>-->
+        <!--<canvas id='canvas1' width="110" height="110"></canvas>-->
+        <!--<canvas id='canvas2' width="110" height="110"></canvas>-->
+        <!--<canvas id='canvas3' width="110" height="110"></canvas>-->
+        <!--<canvas id='canvas4' width="110" height="110"></canvas>-->
+        <!--<canvas id='canvas5' width="110" height="110"></canvas>-->
+        <!--<canvas id='canvas6' width="110" height="110"></canvas>-->
+        <!--<canvas id='canvas7' width="110" height="110"></canvas>-->
+    </div>
+
+    
+    <script>
+    var prototype;
+    var canvas;
+    var items = [];
+    var activeItems = [];
+    $(document).ready(function() {
+        for( var i = 0; i < 10; i++ ) {
+            $('#weapon_' + i ).click(function() {
+                var index = this.id.indexOf('_');
+                var num = this.id.substring(index + 1);
+                
+                if( activeItems[num] === undefined || activeItems[num].displayed === false  ) {
+                    $('#activeTimers').append('<canvas id=\"weapon_' + num + '_ACTIVE\" width=\"110\" height=\"110\"></canvas>');
+                    var tempTimer = new Stopwatch(100, num);
+                    tempTimer.start();
+                    activeItems[num] = tempTimer;
+                }
+                else if( activeItems[num].displayed ) {
+                    activeItems[num].reset();
+                }
+            });
+        }
+    });
+    </script>
+
+    </body>
+</html>
